@@ -1,0 +1,35 @@
+first we need to see that whether our system is big endian or little endian:
+1. first start python by typing python in the command line
+2. then on opening of python write "import sys"
+3. then write "sys.byteorder"
+4. see what is the output whether 'little' or 'big'
+5. now open a python script
+
+import RPi.GPIO as GPIO 
+import struct 
+import os
+
+CLOCK_INP=6
+DATA_INP=17
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(CLOCK_INP,GPIO.IN)
+GPIO.setup(DATA_INP,GPIO.IN)
+
+os.chdir('give the path where file to be saved')
+
+mybinFile=open('data_bin', 'wb')
+
+data=GPIO.input(DATA_INP)
+
+while 1:
+    if GPIO.input(CLOCK_INP) == 1 :
+        entry=struct.pack('<?', data) #for big endian use >
+        data=GPIO.input(DATA_INP)        
+        mybinFile.write(entry)
+        mybinFile.flush()
+
+mybinFile.close()
+
+
+

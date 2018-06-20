@@ -1,0 +1,13 @@
+import csv
+import os
+
+GPIO.setmode(GPIO.BCM)
+
+os.chdir('give the path where file to be saved')
+
+with open('sample.csv', newline='') as myFile:  
+    reader = csv.reader(myFile)
+    for row in reader:
+        mydata=int(row[0])
+        GPIO.output(18, mydata) #18 is my output pin
+        print(mydata)

@@ -21,7 +21,7 @@ writer = csv.writer(myFile)
 
 
 while 1:
-    if CLOCK_INP == 1:
+    if GPIO.input(CLOCK_INP) == 1:
 
-        writer.writerow(DATA_INP) 
+        writer.writerow(GPIO.input(DATA_INP)) 
 
