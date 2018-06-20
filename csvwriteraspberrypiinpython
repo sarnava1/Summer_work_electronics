@@ -1,0 +1,27 @@
+import RPi.GPIO as GPIO
+import csv
+import os
+
+#use pin 6 to work as gnd and pin 7(GPIO 4) to work as data for clock
+#use pin 9 to work as gnd and pin11(GPIO 17) to work as data for data
+
+CLOCK_INP=6
+DATA_INP=17
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(CLOCK_INP,GPIO.IN)
+GPIO.setup(DATA_INP,GPIO.IN)
+
+
+os.chdir('give the path where file to be saved')
+
+myFile=open('sample.csv','a')
+
+writer = csv.writer(myFile)
+
+
+while 1:
+    if CLOCK_INP == 1:
+
+        writer.writerow(DATA_INP) 
+
