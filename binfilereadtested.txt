@@ -1,0 +1,27 @@
+import struct 
+import os
+import numpy as np
+
+os.chdir('C:\Users\user\Desktop')
+
+#mylist=[]
+a=np.array([],dtype='int')
+#j='xxxxxxxxxx'
+
+with open("data_bin9", "rb") as f:
+    while True:
+        byte = f.read(1)
+        if not byte:
+            break
+        a=np.append(a,ord(byte))
+
+length=len(a)
+#print(length)
+#print(a)
+#print(a.astype('int'))
+for i in range(length):
+    print(a[i])
+    #print(i)
+
+    
+#print(struct.unpack('H',f.read(2)))

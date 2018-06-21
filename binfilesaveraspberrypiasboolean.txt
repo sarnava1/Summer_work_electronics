@@ -24,12 +24,12 @@ data=GPIO.input(DATA_INP)
 
 while 1:
     if GPIO.input(CLOCK_INP) == 1 :
-        entry=struct.pack('<?', data) #for big endian use >
+        entry=struct.pack('<?', data) #for big endian use > and ? used for boolean data
         data=GPIO.input(DATA_INP)        
         mybinFile.write(entry)
         mybinFile.flush()
 
 mybinFile.close()
 
-
+GPIO.cleanup()
 

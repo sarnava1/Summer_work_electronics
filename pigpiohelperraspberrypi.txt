@@ -1,0 +1,36 @@
+#this is implementation using pigpio
+#first remember to install all the things as mentioned in the pigpio github page and 
+#also start the pigpiod daemon as instructed in the raspberry pi helper forum
+
+#now the following lines of code are required to start the pigpio process
+
+import RPi.GPIO as GPIO 
+import struct 
+import os
+
+
+GPIO.setmode(GPIO.BCM)
+
+pi = pigio.pi()              # use defaults
+pi = pigpio.pi('mypi')       # specify host, default port
+pi = pigpio.pi('mypi', 7777) # specify host and port and default port 
+
+pi = pigpio.pi()             # exit script if no connection
+if not pi.connected:
+   exit()
+
+
+pi.set_mode( 4, pigpio.INPUT)  # GPIO  4 as input
+pi.set_mode(17, pigpio.OUTPUT) # GPIO 17 as output
+pi.set_mode(24, pigpio.ALT2)   # GPIO 24 as ALT2
+
+#to read we have to do
+pi.read(4)
+
+#to write we have to do
+pi.write(17,0)
+pi.write(17,1)
+
+
+#this is to stop the pigpio process
+pi.stop()

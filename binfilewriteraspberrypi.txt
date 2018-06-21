@@ -31,5 +31,5 @@ while 1:
 
 mybinFile.close()
 
-
+GPIO.cleanup()
 

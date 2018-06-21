@@ -2,8 +2,6 @@ import csv
 import os
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(CLOCK_INP,GPIO.IN)
-GPIO.setup(DATA_INP,GPIO.IN)
 
 os.chdir('give the path where file to be saved')
 

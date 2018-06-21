@@ -1,0 +1,21 @@
+import struct 
+import os
+
+os.chdir('C:\Users\user\Desktop')
+
+mybinFile=open('data_bin9', 'wb')
+
+data=False
+
+#entry=struct.pack('<?', data) #for big endian use > ? used for unsigned short
+for i in range(10000):
+    entry=struct.pack('<?', data)
+    if i%2==0:
+        data=True
+    else:
+        data=False
+    mybinFile.write(entry)
+    #mybinFile.flush()
+
+mybinFile.close()
+

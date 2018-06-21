@@ -3,7 +3,7 @@ import os
 
 GPIO.setmode(GPIO.BCM)
 
-os.chdir('give the path where file to be saved')
+os.chdir('give the path where file to be read is saved')
 
 with open('sample.csv', newline='') as myFile:  
     reader = csv.reader(myFile)
