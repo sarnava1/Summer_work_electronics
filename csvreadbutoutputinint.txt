@@ -1,7 +1,13 @@
+import RPi.GPIO as GPIO
 import csv
 import os
 
 GPIO.setmode(GPIO.BCM)
+
+#board pin 6 will be my ground pin for the data pin 
+#gpio pin 4 will be my data output pin 
+
+GPIO.setup(4, GPIO.OUTPUT)
 
 os.chdir('give the path where file to be read is saved')
 
@@ -9,5 +15,7 @@ with open('sample.csv', newline='') as myFile:
     reader = csv.reader(myFile)
     for row in reader:
         mydata=int(row[0])
-        GPIO.output(18, mydata) #18 is my output pin
+        GPIO.output(4, mydata) #4 is my output pin
         print(mydata)
+
+GPIO.cleanup()

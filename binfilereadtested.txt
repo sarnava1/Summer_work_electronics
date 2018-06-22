@@ -1,12 +1,16 @@
+import RPi.GPIO as GPIO
 import struct 
 import os
 import numpy as np
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(14, GPIO.OUT) #GPIO pin 14 is my data output and board pin 6 is my ground 
+
 os.chdir('C:\Users\user\Desktop')
 
-#mylist=[]
+#mylist=[] #initially thought of storing the read values in a list but numpy array is fater
 a=np.array([],dtype='int')
-#j='xxxxxxxxxx'
+
 
 with open("data_bin9", "rb") as f:
     while True:
@@ -16,12 +20,14 @@ with open("data_bin9", "rb") as f:
         a=np.append(a,ord(byte))
 
 length=len(a)
-#print(length)
-#print(a)
-#print(a.astype('int'))
-for i in range(length):
-    print(a[i])
-    #print(i)
 
-    
-#print(struct.unpack('H',f.read(2)))
+
+#print(a.astype('int')) #this will print the entire array as with the values as int
+
+for i in range(length):
+    GPIO.output(14, a[i])    
+    #print(a[i])
+
+GPIO.cleanup()
+  
+#print(struct.unpack('H',f.read(2))) #this was used to unpack the byte values which were stored using the struct library

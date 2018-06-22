@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 import csv
 import os
 
@@ -9,3 +10,5 @@ with open('sample.csv', newline='') as myFile:
     reader = csv.reader(myFile)
     for row in reader:
         print(row)
+
+GPIO.cleanup()

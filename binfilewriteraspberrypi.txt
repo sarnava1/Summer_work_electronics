@@ -9,12 +9,19 @@ import RPi.GPIO as GPIO
 import struct 
 import os
 
-CLOCK_INP=6
+GPIO.setmode(GPIO.BCM)
+
+#board pin 6 and 9 will be my ground pins for the 2 data pins 
+#gpio pin 4 and 17 will be my clock and data input pin respectively
+
+
+CLOCK_INP=4
 DATA_INP=17
 
-GPIO.setmode(GPIO.BCM)
+
 GPIO.setup(CLOCK_INP,GPIO.IN)
 GPIO.setup(DATA_INP,GPIO.IN)
+
 
 os.chdir('give the path where file to be saved')
 
@@ -24,7 +31,7 @@ data=GPIO.input(DATA_INP)
 
 while 1:
     if GPIO.input(CLOCK_INP) == 1 :
-        entry=struct.pack('<H', data) #for big endian use > H used for unsigned short
+        entry=struct.pack('<H', data) #for big endian use >, H used for unsigned short
         data=GPIO.input(DATA_INP)        
         mybinFile.write(entry)
         mybinFile.flush()

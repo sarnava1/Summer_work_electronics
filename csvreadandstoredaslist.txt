@@ -1,9 +1,15 @@
+import RPi.GPIO as GPIO
 import csv
 import os
 
 GPIO.setmode(GPIO.BCM)
 
 os.chdir('give the path where file to be saved')
+
+#board pin 6 will be my ground pin for the data pin 
+#gpio pin 4 will be my data output pin 
+
+GPIO.setup(4, GPIO.OUTPUT)
 
 mylist=[] #this will be my list
 
@@ -12,12 +18,13 @@ with open('sample.csv', newline='') as myFile:
     for row in reader:
         mydata=int(row[0])
         mylist.append(mydata)
-        #GPIO.output(18, mydata) #18 is my output pin # here now i am appending my values to a list and later i will loop through the values
+        #GPIO.output(4, mydata) #4 is my output pin # here now i am appending my values to a list and later i will loop through the values
         print(mydata)
 
 length=len(mylist)
 
 for i in range(length):
-    GPIO.output(18, mylist[i]) #will output the data at the ith index
+    GPIO.output(4, mylist[i]) #will output the data at the ith index
 
 
+GPIO.cleanup()

@@ -2,15 +2,15 @@
 #first remember to install all the things as mentioned in the pigpio github page and 
 #also start the pigpiod daemon as instructed in the raspberry pi helper forum
 
-#now the following lines of code are required to start the pigpio process
 
 import RPi.GPIO as GPIO 
 import struct 
 import os
 
-
 GPIO.setmode(GPIO.BCM)
 
+#now the following lines of code are required to start the pigpio process
+#default host is 'localhost' and default port is 8888
 pi = pigio.pi()              # use defaults
 pi = pigpio.pi('mypi')       # specify host, default port
 pi = pigpio.pi('mypi', 7777) # specify host and port and default port 
