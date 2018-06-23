@@ -1,0 +1,43 @@
+import struct 
+import os
+import time
+import numpy as np
+
+os.chdir('C:\Users\user\Desktop')
+
+#mylist=[]
+a=np.array([],dtype='int')
+
+start_time=time.time()
+
+with open("data_bin1", "rb") as f:
+    while True:
+        byte = f.read(1)
+        if not byte:
+            break
+        a=np.append(a,ord(byte))
+
+end_time=time.time()
+
+print(end_time-start_time)
+
+length=len(a)
+#print(length)
+#print(a)
+#print(a.astype('int'))
+
+start_time=time.time()
+
+#for i in range(length):
+    #print(a[i])
+    #print(i)
+    #continue
+
+for i in np.nditer(a):
+    #print i;
+    continue
+end_time=time.time()
+
+print(end_time-start_time)
+    
+#print(struct.unpack('H',f.read(2)))

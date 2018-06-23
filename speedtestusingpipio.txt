@@ -1,0 +1,29 @@
+import RPi.GPIO as GPIO
+
+
+GPIO.setmode(GPIO.BCM)
+
+#herein we will use the pigpio library to speed test
+#first remember to install all the things as mentioned in the pigpio github page and 
+#also start the pigpiod daemon as instructed in the raspberry pi helper forum
+
+#now the following lines of code are required to start the pigpio process
+#default host is 'localhost' and default port is 8888
+pi = pigio.pi()              # use defaults
+pi = pigpio.pi('mypi')       # specify host, default port
+pi = pigpio.pi('mypi', 7777) # specify host and port and default port 
+
+pi = pigpio.pi()             # exit script if no connection
+if not pi.connected:
+   exit()
+
+pi.set_mode(14, pigpio.OUTPUT) # GPIO 14 as data output pin and board pin 6 is my ground
+
+while 1:
+    pi.write(14, 1)
+    pi.write(14, 0)
+
+#this is to stop the pigpio process
+pi.stop()
+
+GPIO.cleanup()
