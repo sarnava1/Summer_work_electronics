@@ -1,0 +1,35 @@
+//go to build and then go to the last option
+//then in the last option go to compile and give -lbcm2835
+//also in the build option give -lbcm2835
+//there can be a space between the l and b maybe
+//and in the execute option add sudo at first
+//then write the code and finally do build and compile 
+
+
+#include <bcm2835.h>
+
+#define LED 18 //this 18 is the GPIO BCM no
+
+int main(int argc, char **argv){
+   
+    if(!bcm2835_init())
+        return 1;
+
+    bcm2835_gpio_fsel(LED, BCM2835_GPIO_FSEL_OUTP);
+    //for input mode do this:
+    //bcm2835_gpio_fsel(LED, BCM2835_GPIO_FSEL_INPT);
+    unsigned int delay=1000;
+    while(){
+        bcm2835_gpio_set(LED);
+        bcm2835_delay(delay);
+        bcm2835_gpio_clr(LED);
+        bcm2835_delay(delay);
+     }
+    //to read the state of any pin we can do:
+    //int state=bcm2835_gpio_lev(PIN_NO)
+    //o make any ppin high or low we can use:
+    //bcm2835_gpio_write(PIN_NO, HIGH);
+
+return 0;
+
+}

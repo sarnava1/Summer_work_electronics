@@ -1,0 +1,20 @@
+#sudo apt-get update
+#sudo apt-get upgrade
+#sudo apt-get install geany
+#then open geany 
+
+#go to file and new and then main.c
+#after writing the code, click on the icon for compile and build
+#do compile and build..give the code a anme and select where it will get saved
+#then save
+#then you can run it from geany too
+
+#if you want ot run it from terminal window then:
+#1. go to the dir where your file is saved
+#2. then type ./nameofprogram
+#3. you get to see the output
+
+#now download the bcm2835 library using wget
+#then follow all the instructions as said in the official site
+#be sure to use version 1.50 and above otherwise it wont work with RPi 3
+

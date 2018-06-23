@@ -1,0 +1,21 @@
+#include <bcm2835.h>
+
+#define LED 18 //this 18 is the GPIO BCM no
+
+int main(int argc, char **argv){
+   
+    if(!bcm2835_init())
+        return 1;
+
+    bcm2835_gpio_fsel(LED, BCM2835_GPIO_FSEL_OUTP);
+    
+    while(1){
+        bcm2835_gpio_set(LED);
+        
+        bcm2835_gpio_clr(LED);
+        
+     }
+    
+return 0;
+
+}
