@@ -5,6 +5,9 @@
 #define OUTPIN 4 //this is board pin 7 
 //#define DATA 17 //this is board pin 11
 //we will use board pin 6 and 9 as ground
+//you can also store the data in a array and later on print them...for that:
+//bool arr[10000000];
+//tested in my computer the array implementation was about 30 seconds slower
 
 struct store{
     bool a;
@@ -33,10 +36,12 @@ int main(int argc, char **argv){
     while(1){
         fread(&s, sizeof(struct store), 1, fptr); 
         bcm2835_gpio_write(OUTPIN, s.a);
+        //arr[i]=s.a; 
     }
 
     fclose(fptr);
-
+    //for(i=0;i<10000000;i++){
+        //bcm2835_gpio_write(OUTPIN, arr[i]);   
 return 0;
 
 }

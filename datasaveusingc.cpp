@@ -23,7 +23,7 @@ int main(int argc, char **argv){
     struct store s;
     FILE *fptr;
     
-    if ((fptr = fopen("C:\\Users\\user\\Desktop\\data.bin","wb")) == NULL){ //eg is if ((fptr = fopen("C:\\program.bin","wb")) == NULL){
+    if ((fptr = fopen("C:\\Users\\user\\Desktop\\data4.bin","wb")) == NULL){ //eg is if ((fptr = fopen("C:\\program.bin","wb")) == NULL){
        printf("Error! opening file");
 
        // Program exits if the file pointer returns NULL.
@@ -33,16 +33,16 @@ int main(int argc, char **argv){
     //while(1){
         //if(bcm2835_gpio_lev(CLOCK)==HIGH){
           //  s.a=bcm2835_gpio_lev(DATA);
-            fwrite(&s, sizeof(struct store), 1, fptr);            
+            //fwrite(&s, sizeof(struct store), 1, fptr);            
       //      }
     //}
     int i;
-    for(i=0;i<=10000;i++){
+    for(i=0;i<=1000;i++){
     	if(i%2==0){
-    		s.a=1;
+    		s.a=0;
     		fwrite(&s, sizeof(struct store), 1, fptr);
 		}else{
-			s.a=0;
+			s.a=1;
 			fwrite(&s, sizeof(struct store), 1, fptr);
 		}
 	}
