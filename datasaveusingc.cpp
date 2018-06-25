@@ -23,7 +23,7 @@ int main(int argc, char **argv){
     struct store s;
     FILE *fptr;
     
-    if ((fptr = fopen("C:\\Users\\user\\Desktop\\data4.bin","wb")) == NULL){ //eg is if ((fptr = fopen("C:\\program.bin","wb")) == NULL){
+    if ((fptr = fopen("C:\\Users\\user\\Desktop\\data.bin","wb")) == NULL){ //eg is if ((fptr = fopen("C:\\program.bin","wb")) == NULL){
        printf("Error! opening file");
 
        // Program exits if the file pointer returns NULL.
